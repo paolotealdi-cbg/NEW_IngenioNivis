@@ -224,3 +224,11 @@ test('negative snow falls back to CH2, never accepted as a real zero', () => {
   (raw.hourly as any).snowfall_meteoswiss_icon_ch2=Array(48).fill(null);
   assert.equal(normalizeForecast(raw).hourly.snowfall[0],null);
 });
+test('station 10-minute cache tolerance refreshes despite prior HTTP latency', async () => {
+  seedCache(stationPayload(), 10 * 60_000 - 5_000);
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; return json(stationPayload()); };
+  const data = await fetchStationData();
+  assert.equal(calls, 1);
+  assert.equal(data.meta!.source, 'NETWORK');
+});

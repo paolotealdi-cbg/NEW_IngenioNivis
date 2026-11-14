@@ -4,6 +4,7 @@ import { parseMeasurement, parseStationTimestamp, formatRomeTime } from './dataQ
 
 export const STATION_CACHE_KEY = 'ingenio.station.v2';
 const CACHE_INTERVAL_MS = 10 * 60_000;
+const CACHE_TOLERANCE_MS = 15_000;
 const CACHE_RETENTION_MS = 24 * 60 * 60_000;
 let lastAttemptAt: number | null = null;
 let lastSuccessAt: number | null = null;
@@ -149,7 +150,7 @@ async function loadStation(force = false): Promise<StationData> {
   const cached = readCache();
   let raw = cached?.raw, downloadedAt = cached?.downloadedAt ?? Date.now();
   let source: StationMeta['source'] = 'CACHE';
-  if (force || !cached || Date.now() - cached.downloadedAt >= CACHE_INTERVAL_MS) {
+  if (force || !cached || Date.now() - cached.downloadedAt >= CACHE_INTERVAL_MS - CACHE_TOLERANCE_MS) {
     lastAttemptAt = Date.now();
     try {
       const res = await fetch('/api/station', { cache: 'no-store', signal: AbortSignal.timeout(25_000) });
