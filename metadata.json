@@ -1,0 +1,6 @@
+{
+  "name": "NEW_Ingenio_Nivis",
+  "description": "Smart IoT dashboard for the Ingenio Nivis project. Monitors local weather station data and MeteoSwiss forecasts to automate heating systems for snow prevention on tensile structures.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

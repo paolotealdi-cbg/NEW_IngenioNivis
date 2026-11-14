@@ -1,0 +1,385 @@
+
+> ingenio-nivis-control@0.0.0 test:all
+> npm run lint && npm test && npm run build && npm run test:e2e
+
+
+> ingenio-nivis-control@0.0.0 lint
+> tsc --noEmit
+
+
+> ingenio-nivis-control@0.0.0 test
+> tsx --test tests/unit.test.ts
+
+TAP version 13
+# Subtest: measurement 0 => 0
+ok 1 - measurement 0 => 0
+  ---
+  duration_ms: 1.037874
+  ...
+# Subtest: measurement 0 => 0
+ok 2 - measurement 0 => 0
+  ---
+  duration_ms: 0.283524
+  ...
+# Subtest: measurement -1,5 => -1.5
+ok 3 - measurement -1,5 => -1.5
+  ---
+  duration_ms: 0.310199
+  ...
+# Subtest: measurement  => null
+ok 4 - measurement  => null
+  ---
+  duration_ms: 0.266045
+  ...
+# Subtest: measurement null => null
+ok 5 - measurement null => null
+  ---
+  duration_ms: 0.258568
+  ...
+# Subtest: measurement N/D => null
+ok 6 - measurement N/D => null
+  ---
+  duration_ms: 0.198195
+  ...
+# Subtest: measurement errore 12 => null
+ok 7 - measurement errore 12 => null
+  ---
+  duration_ms: 0.291976
+  ...
+# Subtest: measurement 12 km/h => null
+ok 8 - measurement 12 km/h => null
+  ---
+  duration_ms: 0.168004
+  ...
+# Subtest: measurement NaN => null
+ok 9 - measurement NaN => null
+  ---
+  duration_ms: 0.158841
+  ...
+# Subtest: measurement Infinity => null
+ok 10 - measurement Infinity => null
+  ---
+  duration_ms: 0.164744
+  ...
+# Subtest: measurement 2.3 => 2.3
+ok 11 - measurement 2.3 => 2.3
+  ---
+  duration_ms: 0.148469
+  ...
+# Subtest: timestamps Unix seconds, milliseconds and explicit offsets agree
+ok 12 - timestamps Unix seconds, milliseconds and explicit offsets agree
+  ---
+  duration_ms: 1.956783
+  ...
+# Subtest: local Italian timestamp is interpreted in Rome, not browser timezone
+ok 13 - local Italian timestamp is interpreted in Rome, not browser timezone
+  ---
+  duration_ms: 5.542066
+  ...
+# Subtest: reject ambiguous and nonexistent DST local timestamps
+ok 14 - reject ambiguous and nonexistent DST local timestamps
+  ---
+  duration_ms: 1.024967
+  ...
+# Subtest: reject invalid date and empty timestamp
+ok 15 - reject invalid date and empty timestamp
+  ---
+  duration_ms: 0.229535
+  ...
+# Subtest: freshness boundary age 0
+ok 16 - freshness boundary age 0
+  ---
+  duration_ms: 0.197206
+  ...
+# Subtest: freshness boundary age 1200000
+ok 17 - freshness boundary age 1200000
+  ---
+  duration_ms: 0.223348
+  ...
+# Subtest: freshness boundary age 1200001
+ok 18 - freshness boundary age 1200001
+  ---
+  duration_ms: 0.135855
+  ...
+# Subtest: freshness boundary age 3600000
+ok 19 - freshness boundary age 3600000
+  ---
+  duration_ms: 0.128774
+  ...
+# Subtest: freshness boundary age 3600001
+ok 20 - freshness boundary age 3600001
+  ---
+  duration_ms: 0.121222
+  ...
+# Subtest: freshness boundary age -180000
+ok 21 - freshness boundary age -180000
+  ---
+  duration_ms: 0.146573
+  ...
+# Subtest: absent is distinct from unknown timestamp
+ok 22 - absent is distinct from unknown timestamp
+  ---
+  duration_ms: 0.158481
+  ...
+# Subtest: Rome display independent of host timezone and distinguishes repeated DST hour
+ok 23 - Rome display independent of host timezone and distinguishes repeated DST hour
+  ---
+  duration_ms: 1.531935
+  ...
+# Subtest: window starts at current hour, not midnight; all series share the same index
+ok 24 - window starts at current hour, not midnight; all series share the same index
+  ---
+  duration_ms: 3.710122
+  ...
+# Subtest: window advances without new downloads
+ok 25 - window advances without new downloads
+  ---
+  duration_ms: 1.006929
+  ...
+# Subtest: window refuses missing, duplicate, insufficient or expired time coverage
+ok 26 - window refuses missing, duplicate, insufficient or expired time coverage
+  ---
+  duration_ms: 2.280977
+  ...
+# Subtest: window preserves null and pads short measurement arrays with null
+ok 27 - window preserves null and pads short measurement arrays with null
+  ---
+  duration_ms: 1.092183
+  ...
+# Subtest: UTC window continuous across DST/midnight 2026-10-25T00:30:00Z
+ok 28 - UTC window continuous across DST/midnight 2026-10-25T00:30:00Z
+  ---
+  duration_ms: 0.83974
+  ...
+# Subtest: UTC window continuous across DST/midnight 2026-03-29T00:30:00Z
+ok 29 - UTC window continuous across DST/midnight 2026-03-29T00:30:00Z
+  ---
+  duration_ms: 1.295592
+  ...
+# Subtest: UTC window continuous across DST/midnight 2026-10-22T21:30:00Z
+ok 30 - UTC window continuous across DST/midnight 2026-10-22T21:30:00Z
+  ---
+  duration_ms: 3.738875
+  ...
+# Subtest: normalize CH1 fallback CH2 per value, preserving real zero
+ok 31 - normalize CH1 fallback CH2 per value, preserving real zero
+  ---
+  duration_ms: 3.655272
+  ...
+# Subtest: missing forecast fields are null, malformed time is rejected
+ok 32 - missing forecast fields are null, malformed time is rejected
+  ---
+  duration_ms: 0.493409
+  ...
+# Subtest: station missing fields and history remain N/D/null rather than zero
+ok 33 - station missing fields and history remain N/D/null rather than zero
+  ---
+  duration_ms: 0.974492
+  ...
+# Subtest: station invalid envelope is rejected
+ok 34 - station invalid envelope is rejected
+  ---
+  duration_ms: 0.190377
+  ...
+# Subtest: network success stores observation and download times separately
+ok 35 - network success stores observation and download times separately
+  ---
+  duration_ms: 18.291505
+  ...
+# Subtest: network success can contain old data
+ok 36 - network success can contain old data
+  ---
+  duration_ms: 1.33936
+  ...
+# Subtest: cache hit after page restart does not invent connection success
+ok 37 - cache hit after page restart does not invent connection success
+  ---
+  duration_ms: 0.98607
+  ...
+# Subtest: network failure retains original cached dates and sets connection ERROR
+ok 38 - network failure retains original cached dates and sets connection ERROR
+  ---
+  duration_ms: 1.353739
+  ...
+# Subtest: network failure with expired cached measure stays expired
+ok 39 - network failure with expired cached measure stays expired
+  ---
+  duration_ms: 1.155525
+  ...
+# Subtest: network failure without cache rejects rather than zero-filling
+ok 40 - network failure without cache rejects rather than zero-filling
+  ---
+  duration_ms: 0.545766
+  ...
+# Subtest: invalid API response cannot poison valid cache
+ok 41 - invalid API response cannot poison valid cache
+  ---
+  duration_ms: 1.31659
+  ...
+# Subtest: HTTP 200 HTML is not a healthy API response
+ok 42 - HTTP 200 HTML is not a healthy API response
+  ---
+  duration_ms: 0.435406
+  ...
+# Subtest: unavailable localStorage does not break successful acquisition
+ok 43 - unavailable localStorage does not break successful acquisition
+  ---
+  duration_ms: 1.300963
+  ...
+# Subtest: manual force bypasses fresh cache
+ok 44 - manual force bypasses fresh cache
+  ---
+  duration_ms: 1.596261
+  ...
+# Subtest: parallel station requests are deduplicated
+ok 45 - parallel station requests are deduplicated
+  ---
+  duration_ms: 1.328778
+  ...
+# Subtest: forecast requests use 48 hours Unix; astronomy failure is isolated
+ok 46 - forecast requests use 48 hours Unix; astronomy failure is isolated
+  ---
+  duration_ms: 1.340086
+  ...
+# Subtest: critical forecast activates and predicted stop is after last hazard, not earlier clear hours
+ok 47 - critical forecast activates and predicted stop is after last hazard, not earlier clear hours
+  ---
+  duration_ms: 2.496893
+  ...
+# Subtest: separated hazards do not produce shutdown between episodes
+ok 48 - separated hazards do not produce shutdown between episodes
+  ---
+  duration_ms: 1.963621
+  ...
+# Subtest: partial, old, absent or unknown data never yields SAFE
+ok 49 - partial, old, absent or unknown data never yields SAFE
+  ---
+  duration_ms: 1.294032
+  ...
+# Subtest: stale forecast and unknown WMO inhibit evaluation
+ok 50 - stale forecast and unknown WMO inhibit evaluation
+  ---
+  duration_ms: 1.146306
+  ...
+# Subtest: valid recent clear forecast retains original risk thresholds
+ok 51 - valid recent clear forecast retains original risk thresholds
+  ---
+  duration_ms: 5.634023
+  ...
+# Subtest: direct analysis refuses incomplete sequence
+ok 52 - direct analysis refuses incomplete sequence
+  ---
+  duration_ms: 0.158591
+  ...
+# Subtest: demo SNOW_STORM rebases times and labels synthetic source
+ok 53 - demo SNOW_STORM rebases times and labels synthetic source
+  ---
+  duration_ms: 1.266356
+  ...
+# Subtest: demo FREEZING_RAIN rebases times and labels synthetic source
+ok 54 - demo FREEZING_RAIN rebases times and labels synthetic source
+  ---
+  duration_ms: 1.137675
+  ...
+# Subtest: demo CLEAR_COLD rebases times and labels synthetic source
+ok 55 - demo CLEAR_COLD rebases times and labels synthetic source
+  ---
+  duration_ms: 2.36112
+  ...
+# Subtest: demo HEATING_CYCLE_TEST rebases times and labels synthetic source
+ok 56 - demo HEATING_CYCLE_TEST rebases times and labels synthetic source
+  ---
+  duration_ms: 1.279154
+  ...
+# Subtest: unsupported cache formats are ignored rather than trusted
+ok 57 - unsupported cache formats are ignored rather than trusted
+  ---
+  duration_ms: 0.324478
+  ...
+# Subtest: unknown station timestamp remains unknown despite a successful API call
+ok 58 - unknown station timestamp remains unknown despite a successful API call
+  ---
+  duration_ms: 1.275529
+  ...
+# Subtest: HTTP 503 is an API error even if browser has a network interface
+ok 59 - HTTP 503 is an API error even if browser has a network interface
+  ---
+  duration_ms: 0.69232
+  ...
+# Subtest: all-null station is absent, zero-valued measurements are available
+ok 60 - all-null station is absent, zero-valued measurements are available
+  ---
+  duration_ms: 2.224159
+  ...
+# Subtest: cached forecast age is not reset by constructing a new window
+ok 61 - cached forecast age is not reset by constructing a new window
+  ---
+  duration_ms: 0.493968
+  ...
+# Subtest: timeout is reported independently of cached measurement age
+ok 62 - timeout is reported independently of cached measurement age
+  ---
+  duration_ms: 1.950538
+  ...
+# Subtest: malformed JSON and invalid cache fall back to actual network acquisition
+ok 63 - malformed JSON and invalid cache fall back to actual network acquisition
+  ---
+  duration_ms: 1.303843
+  ...
+# Subtest: successful forced retry clears prior acquisition error
+ok 64 - successful forced retry clears prior acquisition error
+  ---
+  duration_ms: 2.175153
+  ...
+# Subtest: negative snow falls back to CH2, never accepted as a real zero
+ok 65 - negative snow falls back to CH2, never accepted as a real zero
+  ---
+  duration_ms: 0.288768
+  ...
+1..65
+# tests 65
+# suites 0
+# pass 65
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 410.884991
+
+> ingenio-nivis-control@0.0.0 build
+> vite build
+
+vite v6.4.5 building for production...
+transforming...
+✓ 2353 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.07 kB │ gzip:   0.55 kB
+dist/assets/index-cCfeBsPd.css   43.06 kB │ gzip:   8.44 kB
+dist/assets/index-DdeDIRUp.js   834.02 kB │ gzip: 245.82 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 4.94s
+
+> ingenio-nivis-control@0.0.0 test:e2e
+> playwright test
+
+
+Running 11 tests using 1 worker
+
+  ✓   1 tests/dashboard.e2e.ts:28:1 › desktop: recent measurements, verified API and correct current-hour window in foreign timezone (820ms)
+  ✓   2 tests/dashboard.e2e.ts:38:1 › reachable API with old measurements is not declared safe (642ms)
+  ✓   3 tests/dashboard.e2e.ts:44:1 › failed acquisition with recent cached measurement preserves freshness and reports API failure (759ms)
+  ✓   4 tests/dashboard.e2e.ts:50:1 › failed API without cache leaves absent data and working manual demonstration (900ms)
+  ✓   5 tests/dashboard.e2e.ts:62:1 › missing forecast values render N/D and do not activate automatic SAFE (632ms)
+  ✓   6 tests/dashboard.e2e.ts:68:1 › missing temperature is displayed, not converted to 0 degrees (612ms)
+  ✓   7 tests/dashboard.e2e.ts:74:1 › clock aging and next-hour transition update UI without reloading the page (1.5s)
+  ✓   8 tests/dashboard.e2e.ts:84:1 › switching scenarios labels demo and restores real data without browser exceptions (1.5s)
+  ✓   9 tests/dashboard.e2e.ts:95:1 › mobile viewport renders quality and forecasts without runtime exceptions (621ms)
+  ✓  10 tests/dashboard.e2e.ts:101:1 › production server missing secret returns structured 503, never HTML or embedded credentials (15ms)
+  ✓  11 tests/dashboard.e2e.ts:106:1 › late real request cannot overwrite a selected demo (1.7s)
+
+  11 passed (12.6s)

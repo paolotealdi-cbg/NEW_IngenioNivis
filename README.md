@@ -1,11 +1,16 @@
-<div align="center">
+Ingenio Nivis (versione iniziale aprile 2026)
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+## Versione corretta e collaudo
 
-  <h1>Built with AI Studio</h2>
+Le correzioni di finestre previsionali, dati mancanti, cache e disponibilità sono documentate in [docs/CORREZIONI.md](docs/CORREZIONI.md).
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+```sh
+npm ci --include=dev
+npm run lint
+npm test
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+Per eseguire il server impostare `METEOPIEMONTE_API_KEY` e, in produzione, `NODE_ENV=production`; quindi `npm start`. Non inserire chiavi reali nei sorgenti o nel frontend.
