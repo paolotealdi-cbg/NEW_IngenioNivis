@@ -1,7 +1,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import type { DataFreshness, StationData } from '../types';
 
-export const FRESH_LIMIT_MS = 20 * 60_000;
+export const FRESH_LIMIT_MS = 35 * 60_000;
 export const EXPIRED_LIMIT_MS = 60 * 60_000;
 export const FORECAST_MAX_AGE_MS = 30 * 60_000;
 

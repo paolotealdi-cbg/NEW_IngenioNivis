@@ -1,6 +1,6 @@
 import { test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseMeasurement, parseStationTimestamp, classifyFreshness, stationFreshness, formatRomeTime, formatMeasurement } from '../services/dataQuality';
+import { parseMeasurement, parseStationTimestamp, classifyFreshness, stationFreshness, formatRomeTime, formatMeasurement, FRESH_LIMIT_MS, EXPIRED_LIMIT_MS } from '../services/dataQuality';
 import { getForecastWindow } from '../services/forecastWindow';
 import { normalizeForecast, normalizeStationData, fetchStationData, fetchForecast, resetStationSessionForTests, STATION_CACHE_KEY, analyzeRisk } from '../services/weatherService';
 import { evaluateAutomatic } from '../services/evaluateSystem';
@@ -35,7 +35,7 @@ test('reject ambiguous and nonexistent DST local timestamps', () => {
 test('reject invalid date and empty timestamp', () => {
   for (const value of ['31/02/2026 12:00', '', null, '17:23']) assert.equal(parseStationTimestamp(value), null);
 });
-for (const [age, state] of [[0,'FRESH'],[20*60_000,'FRESH'],[20*60_000+1,'OLD'],[60*60_000,'OLD'],[60*60_000+1,'EXPIRED'],[-180_000,'UNKNOWN']] as const) {
+for (const [age, state] of [[0,'FRESH'],[FRESH_LIMIT_MS,'FRESH'],[FRESH_LIMIT_MS+1,'OLD'],[EXPIRED_LIMIT_MS,'OLD'],[EXPIRED_LIMIT_MS+1,'EXPIRED'],[-180_000,'UNKNOWN']] as const) {
   test(`freshness boundary age ${age}`, () => assert.equal(classifyFreshness(true,NOW-age,NOW),state));
 }
 test('absent is distinct from unknown timestamp', () => {

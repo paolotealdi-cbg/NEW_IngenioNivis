@@ -73,7 +73,7 @@ test('missing temperature is displayed, not converted to 0 degrees',async({page}
 });
 test('clock aging and next-hour transition update UI without reloading the page',async({page})=>{
   await prepare(page);
-  await page.clock.fastForward(16*60_000);
+  await page.clock.fastForward(31*60_000);
   await page.evaluate(() => window.dispatchEvent(new Event('focus')));
   await expect(page.locator('header')).toContainText('Dati vecchi');
   await page.clock.fastForward(22*60_000);
